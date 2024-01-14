@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 from PIL import Image, ImageDraw, ImageFont
 import os
@@ -77,7 +75,7 @@ def save_image(image, filename):
                        file_name=filename,
                        mime="image/tiff")
 
-st.title("Image Scale Bar Overlay")
+st.title("Scalebar Overlay Tool")
 
 selected_option = st.selectbox("Select the microscope/objective:", list(resolution_um_mapping.keys()) + ["Custom"])
 
@@ -120,8 +118,8 @@ if uploaded_file is not None:
         bar_height = st.slider("Select the thickness of the scale bar (pixels):", min_value=1, max_value=20, value=5)
         bar_color = st.color_picker("Select the color of the scale bar", '#FFFFFF')
         font_size = st.slider("Select the font size for the label:", min_value=10, max_value=500, value=20)
-        label = st.text_input("Enter the label text (e.g., '100um'):", value=f'{bar_length_microns}um')
-        font_name = st.selectbox("Select the font for the label:", ['arial', 'times new roman', 'verdana', 'myriad pro', 'courier new'])
+        label = st.text_input("Enter the label text (e.g., '100μm'):", value=f'{bar_length_microns}μm')
+        font_name = st.selectbox("Select the font for the label:", ['myriad pro', 'arial', 'times new roman', 'verdana', 'courier new'])
         label_x_offset = st.slider("Adjust the horizontal position of the label:", min_value=-100, max_value=100, value=0)
 
         x_position = st.number_input("Enter the X position for the scale bar:", value=int(image.width - 200), min_value=0)
